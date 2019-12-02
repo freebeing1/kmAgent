@@ -1,8 +1,6 @@
 package kr.ac.hanyang.action;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-
 import org.json.simple.JSONObject;
 
 import kr.ac.hanyang.Util;

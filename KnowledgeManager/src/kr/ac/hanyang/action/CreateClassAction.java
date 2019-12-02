@@ -20,8 +20,8 @@ public class CreateClassAction extends KnowledgeProcessAction {
 	public Object execute(Object o) {
 		
 		ClassArg arg = (ClassArg) o;
-		String superClassID = arg.getSuperClass();
-		String newClassID = arg.getTargetClass();
+		String superClassID = toFullIRI(arg.getSuperClass());
+		String newClassID = toFullIRI(arg.getTargetClass());
 		String result = "";
 		
 		
@@ -63,8 +63,8 @@ public class CreateClassAction extends KnowledgeProcessAction {
 		JSONObject log = new JSONObject();
 
 		log.put("KnowledgeBase", service_OwlFile);
-		log.put("superClassID", superClassID);
-		log.put("newClassID", newClassID);
+		log.put("superClass", toShortenedIRI(superClassID));
+		log.put("class", toShortenedIRI(newClassID));
 		log.put("Ontology Scale", ontologyMonitor_Scale());
 		log.put("result", result);
 		

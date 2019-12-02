@@ -39,6 +39,11 @@ public class QueryRelationAction extends KnowledgeProcessAction {
 		String predicate = tripleArg.getPredicate();
 		String object = tripleArg.getObject();
 		
+		subject = toFullIRI(subject);
+		predicate = toFullIRI(predicate);
+		object = toFullIRI(object);
+		
+		
 		ArrayList<List<String>> result = null;
 		
 		GeneralizedList res = null;
@@ -60,18 +65,18 @@ public class QueryRelationAction extends KnowledgeProcessAction {
 		res = GLFactory.newGL("result", expList);
 		
 		
-		String expS = subject;
-		String expP = predicate;
-		String expO = object;
+		String expS = toShortenedIRI(subject);
+		String expP = toShortenedIRI(predicate);
+		String expO = toShortenedIRI(object);
 		
-		if(!subject.contains("$")) {
-			expS = "\"" + subject + "\"";
+		if(!expS.contains("$")) {
+			expS = "\"" + expS + "\"";
 		}
-		if(!predicate.contains("$")) {
-			expP = "\"" + predicate + "\"";
+		if(!expP.contains("$")) {
+			expP = "\"" + expP + "\"";
 		}
-		if(!object.contains("$")) {
-			expO = "\"" + object + "\"";
+		if(!expO.contains("$")) {
+			expO = "\"" + expO + "\"";
 		}
 		
 		
@@ -106,7 +111,7 @@ public class QueryRelationAction extends KnowledgeProcessAction {
 			if(res_obj.contains("#")) {
 				monitor_o = ontologyMonitor_Individual(res_obj);
 				try {
-					ontologyLog.put("ObjectClass", shortenedIRI(monitor_o.get("typeClass")));
+					ontologyLog.put("ObjectClass", toShortenedIRI(monitor_o.get("typeClass")));
 				} catch (Exception e) {
 					ontologyLog.put("ObjectClass",null);
 				}
@@ -115,10 +120,10 @@ public class QueryRelationAction extends KnowledgeProcessAction {
 				ontologyLog.put("ObjectClass",null);
 			}
 			
-			ontologyLog.put("SubjectClass", shortenedIRI(monitor_s.get("typeClass")));
-			ontologyLog.put("SubjectIndividual", shortenedIRI(res_sbj));
-			ontologyLog.put("Predicate", shortenedIRI(res_pre));
-			ontologyLog.put("ObjectIndividual", shortenedIRI(res_obj));
+			ontologyLog.put("SubjectClass", toShortenedIRI(monitor_s.get("typeClass")));
+			ontologyLog.put("SubjectIndividual", toShortenedIRI(res_sbj));
+			ontologyLog.put("Predicate", toShortenedIRI(res_pre));
+			ontologyLog.put("ObjectIndividual", toShortenedIRI(res_obj));
 			
 			monitorLog.add(ontologyLog);
 		}
@@ -126,16 +131,8 @@ public class QueryRelationAction extends KnowledgeProcessAction {
 		log.put("Ontology Scale", ontologyMonitor_Scale());
 		log.put("GL", resultGL.toString());
 		
-		System.out.println("<TRIPLE> : " + tripleArg);
-		System.out.println();
-		
-		
 		return log.toJSONString(); 
-			
 	}
-
-	
-
 
 	private ArrayList<List<String>> queryRelation(String subject, String predicate, String object) {
 		
@@ -228,6 +225,9 @@ public class QueryRelationAction extends KnowledgeProcessAction {
 			}
 			
 			List<String> resultTriple = new ArrayList<String>();
+			s = toShortenedIRI(s);
+			p = toShortenedIRI(p);
+			o = toShortenedIRI(o);
 			resultTriple.add(s);
 			resultTriple.add(p);
 			resultTriple.add(o);

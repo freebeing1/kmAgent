@@ -30,9 +30,9 @@ public class DeleteRelationAction extends KnowledgeProcessAction {
 	public Object execute(Object o) {
 		// TODO Auto-generated method stub
 		TripleArg arg = (TripleArg) o;
-		String subject = arg.getSubject();
-		String predicate = arg.getPredicate();
-		String object = arg.getObject();
+		String subject = toFullIRI(arg.getSubject());
+		String predicate = toFullIRI(arg.getPredicate());
+		String object = toFullIRI(arg.getObject());
 		String result = "";
 		
 		Individual si = service_OntModel.getIndividual(subject);
@@ -87,9 +87,9 @@ public class DeleteRelationAction extends KnowledgeProcessAction {
 		JSONObject log = new JSONObject();
 		JSONObject tripleLog = new JSONObject();
 		
-		tripleLog.put("subject", subject);
-		tripleLog.put("predicate", predicate);
-		tripleLog.put("object", object);
+		tripleLog.put("subject", toShortenedIRI(subject));
+		tripleLog.put("predicate", toShortenedIRI(predicate));
+		tripleLog.put("object", toShortenedIRI(object));
 		
 		log.put("KnowledgeBase", service_OwlFile);
 		log.put("triple", tripleLog);

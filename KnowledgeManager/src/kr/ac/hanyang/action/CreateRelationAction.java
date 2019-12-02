@@ -34,9 +34,9 @@ public class CreateRelationAction extends KnowledgeProcessAction {
 	public Object execute(Object o) {
 
 		TripleArg arg = (TripleArg) o;
-		String subject = arg.getSubject();
-		String predicate = arg.getPredicate();
-		String object = arg.getObject();
+		String subject = toFullIRI(arg.getSubject());
+		String predicate = toFullIRI(arg.getPredicate());
+		String object = toFullIRI(arg.getObject());
 		
 		String propertyType = "";
 		String result = "";
@@ -175,9 +175,9 @@ public class CreateRelationAction extends KnowledgeProcessAction {
 		JSONObject log = new JSONObject();
 		JSONObject tripleLog = new JSONObject();
 		
-		tripleLog.put("subject", subject);
-		tripleLog.put("predicate", predicate);
-		tripleLog.put("object", object);
+		tripleLog.put("subject", toShortenedIRI(subject));
+		tripleLog.put("predicate", toShortenedIRI(predicate));
+		tripleLog.put("object", toShortenedIRI(object));
 		
 		log.put("KnowledgeBase", service_OwlFile);
 		log.put("triple", tripleLog);

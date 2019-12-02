@@ -16,7 +16,6 @@
 	<classpathentry kind="lib" path="lib/jackson-annotations-2.9.0.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-core-2.9.0.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-databind-2.9.0.jar"/>
-	<classpathentry kind="lib" path="lib/jcl-over-slf4j-1.7.25.jar"/>
 	<classpathentry kind="lib" path="lib/jena-arq-3.7.0.jar"/>
 	<classpathentry kind="lib" path="lib/jena-base-3.7.0.jar"/>
 	<classpathentry kind="lib" path="lib/jena-cmds-3.7.0.jar"/>
@@ -32,9 +31,6 @@
 	<classpathentry kind="lib" path="lib/jena-tdb2-3.7.0.jar"/>
 	<classpathentry kind="lib" path="lib/jsonld-java-0.11.1.jar"/>
 	<classpathentry kind="lib" path="lib/libthrift-0.10.0.jar"/>
-	<classpathentry kind="lib" path="lib/log4j-1.2.17.jar"/>
-	<classpathentry kind="lib" path="lib/slf4j-api-1.7.25.jar" sourcepath="/home/silbot3/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25-sources.jar"/>
-	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.7.25.jar"/>
 	<classpathentry kind="lib" path="lib/xercesImpl-2.11.0.jar"/>
 	<classpathentry kind="lib" path="lib/xml-apis-1.4.01.jar"/>
 	<classpathentry kind="lib" path="lib/apache_xmlrpc_client.jar"/>

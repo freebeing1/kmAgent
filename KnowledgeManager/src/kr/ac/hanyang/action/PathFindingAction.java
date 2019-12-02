@@ -41,8 +41,8 @@ public class PathFindingAction extends KnowledgeProcessAction {
 		long startTime = System.currentTimeMillis();
 		PathFindingArg arg = (PathFindingArg) o;
 		pathList.clear();
-		String start = arg.getStart();
-		String end = arg.getEnd();
+		String start = toFullIRI(arg.getStart());
+		String end = toFullIRI(arg.getEnd());
 		/*
 		 * ArrayList<String> pathX = new ArrayList<String>(); 
 		 * List<Point3D> path = new ArrayList<Point3D>(); 
@@ -298,8 +298,8 @@ public class PathFindingAction extends KnowledgeProcessAction {
 		queryLog.put("Result",result);
 		queryLog.put("InferenceTime", time+"ms");
 		log.put("msg", queryLog);
-		log.put("start", start);
-		log.put("end", end);
+		log.put("start", toShortenedIRI(start));
+		log.put("end", toShortenedIRI(end));
 		log.put("pathType", pathType);
 		log.put("Ontology Scale", ontologyMonitor_Scale());
 		log.put("GL", result);

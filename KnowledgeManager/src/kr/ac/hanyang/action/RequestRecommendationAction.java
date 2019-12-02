@@ -31,11 +31,10 @@ public class RequestRecommendationAction extends KnowledgeProcessAction {
 		
 		RecommendationArg arg = (RecommendationArg) o;
 		
-		String userID = arg.getUserID();
-		String targetAction = arg.getTargetAction();
-		String history = arg.getHistory();
+		String userID = toFullIRI(arg.getUserID());
+		String targetAction = toFullIRI(arg.getTargetAction());
+		String history = toFullIRI(arg.getHistory());
 
-		
 		HashSet<String> objSet = new HashSet<>();
 		HashSet<String> exclusionSet = new HashSet<>();
 		HashSet<String> hSet = new HashSet<>();

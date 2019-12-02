@@ -23,7 +23,7 @@ public class DummyAgent extends ArbiAgent {
 		while(true) {
 			System.out.println("input msg");
 			String msg = sc.nextLine();
-			String res = request(DummyLauncher.KNOWLEDGEMANAGER_ADDRESS, msg);
+			String res = query(DummyLauncher.KNOWLEDGEMANAGER_ADDRESS, msg);
 //			String res = request(DummyLauncher.DIALOGUEMANAGER_ADDRESS, msg);
 			
 			System.out.println(res);

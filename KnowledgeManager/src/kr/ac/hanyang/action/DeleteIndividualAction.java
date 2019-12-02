@@ -25,7 +25,7 @@ public class DeleteIndividualAction extends KnowledgeProcessAction {
 	@Override
 	public Object execute(Object o) {
 		IndividualArg arg = (IndividualArg) o;
-		String individual = arg.getIndividual();
+		String individual = toFullIRI(arg.getIndividual());
 		String result = "";
 		
 		if(isInUse(individual)) {
@@ -61,7 +61,8 @@ public class DeleteIndividualAction extends KnowledgeProcessAction {
 		JSONObject log = new JSONObject();
 
 		log.put("KnowledgeBase", service_OwlFile);
-		log.put("individual", individual);
+		log.put("typeClass", toShortenedIRI(arg.getTypeClass()));		
+		log.put("individual", toShortenedIRI(individual));
 		log.put("Ontology Scale", ontologyMonitor_Scale());
 		log.put("result", result);
 		

@@ -247,7 +247,7 @@ public abstract class KnowledgeProcessAction implements ActionBody{
 	 * @param uri : full IRI of an entity
 	 * @return Shortened IRI
 	 */
-	protected static String shortenedIRI(String uri) {
+	protected static String toShortenedIRI(String uri) {
 		String iri = null;
 		
 		if(uri.contains(PREFIX_xsd)) {
@@ -272,8 +272,6 @@ public abstract class KnowledgeProcessAction implements ActionBody{
 			iri = "isro_social:" + uri.split("#")[1];
 		} else if(uri.contains(PREFIX_isro_medical)) {
 			iri = "isro_medical:" + uri.split("#")[1];
-		} else if(uri.contains(PREFIX_isro_medical)) {
-			iri = "isro_medical:" + uri.split("#")[1];
 		} else if(uri.contains(PREFIX_service)) {
 			iri = "complexService:" + uri.split("#")[1];
 		} else {
@@ -282,6 +280,54 @@ public abstract class KnowledgeProcessAction implements ActionBody{
 		
 		return iri;
 	}
+	
+	protected static String toFullIRI(String uri) {
+		String iri = null;
+		if(uri.contains("xsd:")) {
+			iri = PREFIX_xsd + uri.split(":")[1];
+		}
+		else if(uri.contains("owl:")) {
+			iri = PREFIX_owl + uri.split(":")[1];
+		}
+		else if(uri.contains("rdf:")) {
+			iri = PREFIX_rdf + uri.split(":")[1];
+		}
+		else if(uri.contains("rdfs:")) {
+			iri = PREFIX_rdfs + uri.split(":")[1];
+		}
+		else if(uri.contains("knowrob:")) {
+			iri = PREFIX_knowrob + uri.split(":")[1];
+		}
+		else if(uri.contains("isro:")) {
+			iri = PREFIX_isro + uri.split(":")[1];
+		}
+		else if(uri.contains("isro_map:")) {
+			iri = PREFIX_isro_map + uri.split(":")[1];
+		}
+		else if(uri.contains("isro_cap:")) {
+			iri = PREFIX_isro_cap + uri.split(":")[1];
+		}
+		else if(uri.contains("isro_cloud:")) {
+			iri = PREFIX_isro_cloud + uri.split(":")[1];
+		}
+		else if(uri.contains("isro_social:")) {
+			iri = PREFIX_isro_social + uri.split(":")[1];
+		}
+		else if(uri.contains("isro_medical:")) {
+			iri = PREFIX_isro_medical + uri.split(":")[1];
+		}
+		else if(uri.contains("complexService:")) {
+			iri = PREFIX_service + uri.split(":")[1];
+		}
+		
+		
+		else {
+			iri = uri;
+		}
+		
+		return iri;
+	}
+	
 	
 	/**
 	 * class count
@@ -329,6 +375,8 @@ public abstract class KnowledgeProcessAction implements ActionBody{
 	public static HashMap<String, String> ontologyMonitor_Individual(String individual) {
 
 		HashMap<String, String> map = new HashMap<String, String>();
+		
+		individual = toFullIRI(individual);
 		
 		String queryString = "" 
 				+ PREFIX 
@@ -408,10 +456,10 @@ public abstract class KnowledgeProcessAction implements ActionBody{
 			service_OntModel.addSubModel(ISRO_cloud_OntModel);
 			System.out.println("<INIT>: SERVICE ontology model is Loaded.\n");
 			
-			System.out.println("<Test environment> : ready to start!\n");
+			System.out.println("<TEST> : ready to start!\n");
 			
 		} else {
-			System.out.println("Waiting for service package dispatch...\n");
+			System.out.println("Waiting for service package be dispatched...\n");
 		}
 	}
 	

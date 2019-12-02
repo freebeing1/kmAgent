@@ -21,8 +21,8 @@ public class CreateIndividualAction extends KnowledgeProcessAction {
 	public Object execute(Object o) {
 		
 		IndividualArg arg = (IndividualArg) o;
-		String typeClassID = arg.getTypeClass();
-		String individualID = arg.getIndividual();
+		String typeClassID = toFullIRI(arg.getTypeClass());
+		String individualID = toFullIRI(arg.getIndividual());
 		String result = "";
 		
 		OntClass typeClass = service_OntModel.getOntClass(typeClassID);
@@ -63,8 +63,8 @@ public class CreateIndividualAction extends KnowledgeProcessAction {
 		JSONObject log = new JSONObject();
 
 		log.put("Knowledge Base", service_OwlFile);
-		log.put("typeClassID", typeClassID);
-		log.put("individualID", individualID);
+		log.put("typeClass", toShortenedIRI(typeClassID));
+		log.put("individual", toShortenedIRI(individualID));
 		log.put("Ontology Scale", ontologyMonitor_Scale());
 		log.put("result", result);
 		

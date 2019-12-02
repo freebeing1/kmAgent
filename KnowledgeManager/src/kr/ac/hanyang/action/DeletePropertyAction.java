@@ -28,8 +28,8 @@ public class DeletePropertyAction extends KnowledgeProcessAction{
 	@Override
 	public Object execute(Object o) {
 		PropertyArg arg = (PropertyArg) o;
-		String pType = arg.getPropertyType();
-		String pID = arg.getPropertyID();
+		String pType = toFullIRI(arg.getPropertyType());
+		String pID = toFullIRI(arg.getPropertyID());
 		String result = "";
 		
 		if(isInUse(pID)) {
@@ -86,7 +86,10 @@ public class DeletePropertyAction extends KnowledgeProcessAction{
 
 		log.put("KnowledgeBase", service_OwlFile);
 		log.put("propertyType", pType);
-		log.put("propertyID", pID);
+		log.put("superProperty", toShortenedIRI(arg.getSuperProperty()));
+		log.put("property", toShortenedIRI(pID));
+		log.put("domain", toShortenedIRI(arg.getDomain()));
+		log.put("range", toShortenedIRI(arg.getRange()));
 		log.put("Ontology Scale", ontologyMonitor_Scale());
 		log.put("result", result);
 		

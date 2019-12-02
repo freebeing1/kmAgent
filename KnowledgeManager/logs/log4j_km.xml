@@ -1,0 +1,32 @@
+<log4j:event logger="org.apache.jena.riot" timestamp="1575298751819" level="ERROR" thread="main">
+<log4j:message><![CDATA[[line: 3, col: 8 ] {E213} Invalid byte 1 of 1-byte UTF-8 sequence.]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="org.apache.jena.riot" timestamp="1575298751843" level="ERROR" thread="main">
+<log4j:message><![CDATA[[line: 3, col: 8 ] {E213} Invalid byte 1 of 1-byte UTF-8 sequence.]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="org.apache.jena.riot" timestamp="1575298751897" level="ERROR" thread="main">
+<log4j:message><![CDATA[[line: 3, col: 8 ] {E213} Invalid byte 1 of 1-byte UTF-8 sequence.]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="org.apache.jena.riot" timestamp="1575298751963" level="ERROR" thread="main">
+<log4j:message><![CDATA[[line: 3, col: 8 ] {E213} Invalid byte 1 of 1-byte UTF-8 sequence.]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="org.apache.jena.riot" timestamp="1575299361060" level="ERROR" thread="main">
+<log4j:message><![CDATA[[line: 3, col: 8 ] {E213} Invalid byte 1 of 1-byte UTF-8 sequence.]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="org.apache.jena.riot" timestamp="1575299361084" level="ERROR" thread="main">
+<log4j:message><![CDATA[[line: 3, col: 8 ] {E213} Invalid byte 1 of 1-byte UTF-8 sequence.]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="org.apache.jena.riot" timestamp="1575299361122" level="ERROR" thread="main">
+<log4j:message><![CDATA[[line: 3, col: 8 ] {E213} Invalid byte 1 of 1-byte UTF-8 sequence.]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="org.apache.jena.riot" timestamp="1575299361174" level="ERROR" thread="main">
+<log4j:message><![CDATA[[line: 3, col: 8 ] {E213} Invalid byte 1 of 1-byte UTF-8 sequence.]]></log4j:message>
+</log4j:event>
+

@@ -54,11 +54,6 @@ public class QueryCloudRelationAction extends KnowledgeProcessAction {
 		log.put("Ontology Scale", ontologyMonitor_Scale());
 		log.put("GL", resultGL.toString());
 		
-		System.out.println("<TRIPLE> : " + triple);
-		System.out.println();
-		
-		
-		
 		return log.toJSONString();
 	}
 	

@@ -21,8 +21,8 @@ public class DeleteClassAction extends KnowledgeProcessAction{
 	@Override
 	public Object execute(Object o) {
 		ClassArg arg = (ClassArg) o;
-		String scID = arg.getSuperClass();
-		String tcID = arg.getTargetClass();
+		String scID = toFullIRI(arg.getSuperClass());
+		String tcID = toFullIRI(arg.getTargetClass());
 		String result = "";
 
 		OntClass superClass = null;
@@ -66,8 +66,8 @@ public class DeleteClassAction extends KnowledgeProcessAction{
 		JSONObject log = new JSONObject();
 
 		log.put("KnowledgeBase", service_OwlFile);
-		log.put("superClassID", scID);
-		log.put("targetClassID", tcID);
+		log.put("superClass", toShortenedIRI(scID));
+		log.put("class", toShortenedIRI(tcID));
 		log.put("Ontology Scale", ontologyMonitor_Scale());
 		log.put("result", result);
 		

@@ -72,6 +72,7 @@ public class KmAgent extends ArbiAgent {
 
 	@Override
 	public void onStart() {
+		
 		System.out.println("+++++++++++++++++++++++++++++++");
 		System.out.println("+   Knowledge Manager Start   +");
 		System.out.println("+++++++++++++++++++++++++++++++");
@@ -89,7 +90,7 @@ public class KmAgent extends ArbiAgent {
 		// ---------------- //
 		
 		System.out.println("Welcome to Initialize!");
-		InitializeAction ia = new InitializeAction();
+		InitializeAction ia = new InitializeAction(); // 여기서 출력됨
 		AgentAction actionIA = new AgentAction("InitializeType", ia);
 		loggerManager.registerAction(actionIA, LogTiming.Later);
 		actionIA.changeAction(true);
@@ -205,7 +206,7 @@ public class KmAgent extends ArbiAgent {
 		actionPF.changeAction(true);
 		
 		
-		System.out.println("Welcome to RequestRecommendation!");
+		System.out.println("Welcome to RequestRecommendation!\n");
 		RequestRecommendationAction rra = new RequestRecommendationAction();
 		AgentAction actionRRA = new AgentAction("RequestRecommendation", rra);
 		loggerManager.registerAction( actionRRA, LogTiming.Later);

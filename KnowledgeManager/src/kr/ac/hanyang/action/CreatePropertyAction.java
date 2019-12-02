@@ -27,10 +27,10 @@ public class CreatePropertyAction extends KnowledgeProcessAction{
 		
 		PropertyArg arg = (PropertyArg) o;
 		String propertyType = arg.getPropertyType();
-		String superProperty = arg.getSuperProperty();
-		String propertyID = arg.getPropertyID();
-		String domain = arg.getDomain();
-		String range = arg.getRange();
+		String superProperty = toFullIRI(arg.getSuperProperty());
+		String propertyID = toFullIRI(arg.getPropertyID());
+		String domain = toFullIRI(arg.getDomain());
+		String range = toFullIRI(arg.getRange());
 		
 		if(propertyType.equals("ObjectProperty")) {
 			result = createObjectProperty(superProperty, propertyID, domain, range);
@@ -47,10 +47,10 @@ public class CreatePropertyAction extends KnowledgeProcessAction{
 
 		log.put("KnowledgeBase", service_OwlFile);
 		log.put("propertyType", propertyType);
-		log.put("superProperty", superProperty);
-		log.put("propertyID", propertyID);
-		log.put("domain", domain);
-		log.put("range", range);
+		log.put("superProperty", toShortenedIRI(superProperty));
+		log.put("property", toShortenedIRI(propertyID));
+		log.put("domain", toShortenedIRI(domain));
+		log.put("range", toShortenedIRI(range));
 		log.put("Ontology Scale", ontologyMonitor_Scale());
 		log.put("result", result);
 		

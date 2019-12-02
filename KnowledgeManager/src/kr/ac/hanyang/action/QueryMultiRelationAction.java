@@ -99,7 +99,6 @@ public class QueryMultiRelationAction extends KnowledgeProcessAction{
 		log.put("QueryType", "KnowledgeBase");
 		log.put("msg", queryLog);
 		
-		
 		for(int i=0;i<result.get(0).get(0).size();i++) {
 			JSONObject ontologyLog = new JSONObject();
 			String res_sbj = result.get(0).get(0).get(i);
@@ -111,7 +110,7 @@ public class QueryMultiRelationAction extends KnowledgeProcessAction{
 			if(res_obj.contains("#")) {
 				monitor_o = ontologyMonitor_Individual(res_obj);
 				try {
-					ontologyLog.put("ObjectClass", shortenedIRI(monitor_o.get("typeClass")));
+					ontologyLog.put("ObjectClass", toShortenedIRI(monitor_o.get("typeClass")));
 				} catch (Exception e) {
 					ontologyLog.put("ObjectClass", null);
 				}
@@ -120,19 +119,16 @@ public class QueryMultiRelationAction extends KnowledgeProcessAction{
 				ontologyLog.put("ObjectClass", null);
 			}
 			
-			ontologyLog.put("SubjectClass", shortenedIRI(monitor_s.get("typeClass")));
-			ontologyLog.put("SubjectIndividual", shortenedIRI(res_sbj));
-			ontologyLog.put("Predicate", shortenedIRI(res_pre));
-			ontologyLog.put("ObjectIndividual", shortenedIRI(res_obj));
+			ontologyLog.put("SubjectClass", toShortenedIRI(monitor_s.get("typeClass")));
+			ontologyLog.put("SubjectIndividual", toShortenedIRI(res_sbj));
+			ontologyLog.put("Predicate", toShortenedIRI(res_pre));
+			ontologyLog.put("ObjectIndividual", toShortenedIRI(res_obj));
 			
 			monitorLog.add(ontologyLog);
 		}
 		log.put("Ontology Monitor", monitorLog);
 		log.put("Ontology Scale", ontologyMonitor_Scale());
 		log.put("GL", resultGL.toString());
-		
-		System.out.println("<TRIPLE SET> : " + tripleSet);
-		System.out.println();
 		
 		return log.toJSONString();
 	}
@@ -147,9 +143,9 @@ public class QueryMultiRelationAction extends KnowledgeProcessAction{
 		String whereClause = "";
 
 		for(int i=0; i<arraySize; i++) {
-			String s_query = subject.get(i);
-			String p_query = predicate.get(i);
-			String o_query = object.get(i);
+			String s_query = toFullIRI(subject.get(i));
+			String p_query = toFullIRI(predicate.get(i));
+			String o_query = toFullIRI(object.get(i));
 			
 			if(s_query.contains("$")) {
 				s_query = "?" + s_query.substring(1);
@@ -216,16 +212,16 @@ public class QueryMultiRelationAction extends KnowledgeProcessAction{
 			for(String item : selectClause.split(" ")) {
 				for(int i=0; i<arraySize; i++) {
 					if(item.equals(s.get(i).substring(1))) {
-						s.set(i, soln.getResource(item).getURI());
+						s.set(i, toShortenedIRI(soln.getResource(item).getURI()));
 					}
 					if(item.equals(p.get(i).substring(1))){
-						p.set(i, soln.getResource(item).getURI());
+						p.set(i, toShortenedIRI(soln.getResource(item).getURI()));
 					}
 					if(item.equals(o.get(i).substring(1))){
 						try {
-							o.set(i, soln.getResource(item).getURI());
+							o.set(i, toShortenedIRI(soln.getResource(item).getURI()));
 						} catch (Exception e) {
-							o.set(i, soln.getLiteral(item).getString());
+							o.set(i, toShortenedIRI(soln.getLiteral(item).getString()));
 						}
 					}
 				}
