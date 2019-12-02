@@ -18,9 +18,9 @@ public class DmAgent extends ArbiAgent {
 	
 	@Override
 	public void onStart() {
-		System.out.println("++++++++++++++++++++++++++++");
-		System.out.println("+   Dialog Manager Start   +");
-		System.out.println("++++++++++++++++++++++++++++");
+		System.out.println("++++++++++++++++++++++++++++++");
+		System.out.println("+   Dialogue Manager Start   +");
+		System.out.println("++++++++++++++++++++++++++++++");
 		System.out.println();
 		
 		dc = new DataSource();
@@ -157,12 +157,7 @@ public class DmAgent extends ArbiAgent {
 						String arg1 = argsGL.getExpression(0).asValue().stringValue();
 						String arg2 = argsGL.getExpression(1).asValue().stringValue();
 						if(arg2.equals("불가")) {
-							if(arg1.equals("물")) {
-								response = "(responseConversationContent \"죄송하지만, " + arg1 + "은 현재 제공해드릴 수 없습니다.\")";
-							}
-							else {
-								response = "(responseConversationContent \"죄송하지만, " + arg1 + "는 현재 제공해드릴 수 없습니다.\")";
-							}
+							response = "(responseConversationContent \"죄송하지만, " + arg1 + "은 현재 제공해드릴 수 없습니다.\")";
 						}
 						else {
 							if(arg1.equals("전등")) {
@@ -222,16 +217,16 @@ public class DmAgent extends ArbiAgent {
 						String h = hGL.getExpression(0).asValue().stringValue();
 						
 						if(d.equals("null") && h.equals("null")) {
-							response = "(responseConversationContent \"" + user + " 님이 음료 중 드실 수 있는 것은 " + r + "입니다. 무엇을 드릴까요?\")";
+							response = "(responseConversationContent \"" + user + " 님, " + r + " 중 어떤 음료를 드릴까요?\")";
 						}
 						else if(d.equals("null")) {
-							response = "(responseConversationContent \"" + user + " 님은 이미 " + h + "를 드셨으므로, 음료 중 드실 수 있는 것은 " + r + "입니다. 무엇을 드릴까요?\")";
+							response = "(responseConversationContent \"" + user + " 님은 이미 " + h + "를 드셨군요. " + r + " 중 어떤 음료를 드릴까요?\")";
 						}
 						else if(h.equals("null")) {
-							response = "(responseConversationContent \"" + user + " 님은 " + d + "가 있으시므로, 음료 중 드실 수 있는 것은 " + r + "입니다. 무엇을 드릴까요?\")";
+							response = "(responseConversationContent \"" + user + " 님은 " + d + "가 있으시군요. " + r + " 중 어떤 음료를 드릴까요?\")";
 						}
 						else {
-							response = "(responseConversationContent \"" + user + " 님은 " + d + "가 있으시고, 이미 " + h + "를 드셨으므로, 음료 중 드실 수 있는 것은 " + r + "입니다. 무엇을 드릴까요?\")";
+							response = "(responseConversationContent \"" + user + " 님은 " + d + "가 있으시고, 이미 " + h + "를 드셨군요. " + r + " 중 어떤 음료를 드릴까요?\")";
 						}
 					}
 					
@@ -307,7 +302,7 @@ public class DmAgent extends ArbiAgent {
 				
 				String content = requestGL.getExpression(0).asValue().stringValue();
 				
-				if(content.contains("목말라") || content.contains("목 말라") || content.contains("목") || content.contains("먹었")) { // (requestConversationAnalysis "로봇아 나 목 말라")
+				if(content.contains("목말라") || content.contains("목 말라") || content.contains("목")) { // (requestConversationAnalysis "로봇아 나 목 말라")
 					response = "(responseConversationAnalysis (speechIntention \"InformationDelivery\") (triple \"화자\" \"상태\" \"갈증\")) ";
 					dc.assertFact(response);
 					System.out.println("<AssertFact> : " + response);
@@ -338,12 +333,23 @@ public class DmAgent extends ArbiAgent {
 					else if(content.contains("주스")) {
 						response = "(responseConversationAnalysis (speechIntention \"Request\") (arguments \"화자\" \"음료\" \"주스\")) ";
 					}
+					else if(content.contains("탄산")) {
+						response = "(responseConversationAnalysis (speechIntention \"Request\") (arguments \"화자\" \"음료\" \"탄산수\")) ";
+					}
 					else {
 						response = "(responseConversationAnalysis (speechIntention \"Request\") (arguments \"화자\" \"음료\" \"null\")) ";
 					}
 					dc.assertFact(response);
 					System.out.println("<AssertFact> : " + response);
 				}// (responseConversationAnalysis (speechIntention "Request") (arguments "화자" "후식" "물"))
+				
+				else if(content.contains("그래") || content.contains("맞아")) {
+					response = "(responseConversationAnalysis (speechIntention \"Agreement\") (arguments \"null\"))";
+				}
+				
+				else if(content.contains("아니") || content.contains("괜찮아")) {
+					response = "(responseConversationAnalysis (speechIntention \"Disagreement\") (arguments \"null\"))";
+				}
 				
 				else {
 					response = "(responseConversationAnalysis \"FAIL\")";
