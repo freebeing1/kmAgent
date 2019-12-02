@@ -3102,6 +3102,12 @@ Semantics: The link pointed to is an end link (= the last link in kinematic chai
     
 
 
+    <!-- http://robot-arbi.kr/ontologies/isro.owl#hasConstituent -->
+
+    <owl:ObjectProperty rdf:about="http://robot-arbi.kr/ontologies/isro.owl#hasConstituent"/>
+    
+
+
     <!-- http://robot-arbi.kr/ontologies/isro.owl#hasDepartment -->
 
     <owl:ObjectProperty rdf:about="http://robot-arbi.kr/ontologies/isro.owl#hasDepartment">
@@ -3506,6 +3512,12 @@ Semantics: The link pointed to is an end link (= the last link in kinematic chai
         <rdfs:domain rdf:resource="http://robot-arbi.kr/ontologies/isro.owl#Schedule"/>
         <rdfs:range rdf:resource="http://knowrob.org/kb/knowrob.owl#SpatialThing-Localized"/>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://robot-arbi.kr/ontologies/isro.owl#servesWith -->
+
+    <owl:ObjectProperty rdf:about="http://robot-arbi.kr/ontologies/isro.owl#servesWith"/>
     
 
 
@@ -17129,6 +17141,22 @@ takes into account object form, obstacles (as perceived by TOF camera), feedback
     
 
 
+    <!-- http://robot-arbi.kr/ontologies/isro.owl#Caffeine -->
+
+    <owl:Class rdf:about="http://robot-arbi.kr/ontologies/isro.owl#Caffeine">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#FoodIngredientOnly"/>
+    </owl:Class>
+    
+
+
+    <!-- http://robot-arbi.kr/ontologies/isro.owl#CarbonicAcid -->
+
+    <owl:Class rdf:about="http://robot-arbi.kr/ontologies/isro.owl#CarbonicAcid">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#FoodIngredientOnly"/>
+    </owl:Class>
+    
+
+
     <!-- http://robot-arbi.kr/ontologies/isro.owl#ChargerCheck -->
 
     <owl:Class rdf:about="http://robot-arbi.kr/ontologies/isro.owl#ChargerCheck">
@@ -17227,6 +17255,14 @@ takes into account object form, obstacles (as perceived by TOF camera), feedback
 
     <owl:Class rdf:about="http://robot-arbi.kr/ontologies/isro.owl#Course">
         <rdfs:subClassOf rdf:resource="http://robot-arbi.kr/ontologies/isro.owl#EducationalConcept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://robot-arbi.kr/ontologies/isro.owl#Creamer -->
+
+    <owl:Class rdf:about="http://robot-arbi.kr/ontologies/isro.owl#Creamer">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#FoodIngredientOnly"/>
     </owl:Class>
     
 
@@ -17360,6 +17396,14 @@ takes into account object form, obstacles (as perceived by TOF camera), feedback
     
 
 
+    <!-- http://robot-arbi.kr/ontologies/isro.owl#Fragile -->
+
+    <owl:Class rdf:about="http://robot-arbi.kr/ontologies/isro.owl#Fragile">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#ObjectState"/>
+    </owl:Class>
+    
+
+
     <!-- http://robot-arbi.kr/ontologies/isro.owl#Google -->
 
     <owl:Class rdf:about="http://robot-arbi.kr/ontologies/isro.owl#Google">
@@ -17420,6 +17464,14 @@ takes into account object form, obstacles (as perceived by TOF camera), feedback
 
     <owl:Class rdf:about="http://robot-arbi.kr/ontologies/isro.owl#Hokuyo">
         <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/srdl2-comp.owl#TwoDimensionalLaserScanner"/>
+    </owl:Class>
+    
+
+
+    <!-- http://robot-arbi.kr/ontologies/isro.owl#Hot -->
+
+    <owl:Class rdf:about="http://robot-arbi.kr/ontologies/isro.owl#Hot">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#ObjectState"/>
     </owl:Class>
     
 
@@ -17871,6 +17923,14 @@ takes into account object form, obstacles (as perceived by TOF camera), feedback
 
     <owl:Class rdf:about="http://robot-arbi.kr/ontologies/isro.owl#SoundLocalizationComponent">
         <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/srdl2-comp.owl#SoftwareComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://robot-arbi.kr/ontologies/isro.owl#SparklingWater -->
+
+    <owl:Class rdf:about="http://robot-arbi.kr/ontologies/isro.owl#SparklingWater">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#SoftDrink"/>
     </owl:Class>
     
 
